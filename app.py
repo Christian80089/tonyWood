@@ -17,10 +17,10 @@ def load_data(input_path):
     
 csv_paths = {
     "conteggio": get_csv_path(
-        "../conteggio_query_con_totale.csv"
+        "conteggio_query_con_totale.csv"
     ),
     "dettagli": get_csv_path(
-        "../risultati_query.csv"
+        "risultati_query.csv"
     )
 }
 
