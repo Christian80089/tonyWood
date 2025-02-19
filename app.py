@@ -1,10 +1,31 @@
 import streamlit as st
 import pandas as pd
+import os
 
-# Dati di esempio
-df_main = pd.read_csv("C:/Users/chris/Desktop/tonyWoodScript/conteggio_query_con_totale.csv", delimiter=",")
+def get_csv_path(relative_path):
+    """Get absolute path for a CSV file in the resources folder."""
+    base_path = os.path.abspath(os.path.dirname(__file__))
+    return os.path.join(base_path, relative_path)
 
-df_details = pd.read_csv("C:/Users/chris/Desktop/tonyWoodScript/risultati_query.csv", delimiter=",")
+def load_data(input_path):
+    try:
+        csv_data = pd.read_csv(input_path)
+        return csv_data
+    except FileNotFoundError:
+        st.error("The CSV file was not found. Please check the path and try again.")
+        return None
+    
+csv_paths = {
+    "conteggio": get_csv_path(
+        "../conteggio_query_con_totale.csv"
+    ),
+    "dettagli": get_csv_path(
+        "../risultati_query.csv"
+    )
+}
+
+df_main = load_data(csv_paths["conteggio"])
+df_details = load_data(csv_paths["dettagli"])
 
 # Stato della selezione
 if "selected_id" not in st.session_state:
