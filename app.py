@@ -31,7 +31,7 @@ if "selected_type" not in st.session_state:
 
 # Se i dati sono stati caricati correttamente
 if df_main is not None and df_details is not None:
-    st.write("### Tabella principale (conteggio)")
+    st.write("### Tabella Conteggi")
     st.dataframe(df_main, use_container_width=True)  # Mostra la tabella principale con conteggi
 
     # Espandi i radio button per la selezione
@@ -43,10 +43,34 @@ if df_main is not None and df_details is not None:
 
     # Mostra la tabella filtrata se un tipo è stato selezionato
     if st.session_state.selected_type is not None:
-        st.write(f"### Dettagli per type: {st.session_state.selected_type}")
+        st.write(f"### Dettagli per: {st.session_state.selected_type}")
 
         # Filtra la tabella dettagli
         filtered_df = df_details[df_details["type"] == st.session_state.selected_type]
+        
+        selected_columns = [
+            "squadraCasa", "squadraOspite", "selectorRisultato",
+            "selectorQuota1Media", "selectorQuotaxMedia", "selectorQuota2Media",
+            "selectorQuotaOver25Media", "selectorQuotaUnder25Media",
+            "selectorQuotaGoalMedia", "selectorQuotaNoGoalMedia"
+        ]
+        
+        rename_columns = {
+            "squadraCasa": "Squadra Casa",
+            "squadraOspite": "Squadra Ospite",
+            "selectorRisultato": "Risultato",
+            "selectorQuota1Media": "1",
+            "selectorQuotaxMedia": "X",
+            "selectorQuota2Media": "2",
+            "selectorQuotaOver25Media": "Over 2.5",
+            "selectorQuotaUnder25Media": "Under 2.5",
+            "selectorQuotaGoalMedia": "Goal",
+            "selectorQuotaNoGoalMedia": "No Goal",
+            "risultatoFinale": "Risultato Finale"
+        }
+        
+        filtered_df = filtered_df[selected_columns]
+        filtered_df = filtered_df.rename(columns=rename_columns)  # Rinomina le colonne
 
         # Controlla se ci sono risultati
         if not filtered_df.empty:
