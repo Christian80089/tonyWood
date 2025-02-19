@@ -31,18 +31,15 @@ if "selected_type" not in st.session_state:
 
 # Se i dati sono stati caricati correttamente
 if df_main is not None and df_details is not None:
-    st.write("### Seleziona una riga dalla tabella principale:")
+    st.write("### Tabella principale (conteggio)")
+    st.dataframe(df_main, use_container_width=True)  # Mostra la tabella principale con conteggi
 
-    # Aggiunge una colonna per la selezione manuale
-    df_main["Seleziona"] = df_main["type"].apply(lambda x: False)
+    # Espandi i radio button per la selezione
+    with st.expander("🔽 Seleziona un tipo per visualizzare i dettagli"):
+        selected_type = st.radio("Seleziona un elemento:", df_main["type"].unique())
 
-    # Usa radio button per selezionare un type
-    selected_type = st.radio("Seleziona un elemento:", df_main["type"].unique())
-
-    # Salva il valore selezionato nello stato
-    st.session_state.selected_type = selected_type
-
-    st.write(f"✅ Tipo selezionato: {st.session_state.selected_type}")
+        # Salva il valore selezionato nello stato
+        st.session_state.selected_type = selected_type
 
     # Mostra la tabella filtrata se un tipo è stato selezionato
     if st.session_state.selected_type is not None:
@@ -53,6 +50,6 @@ if df_main is not None and df_details is not None:
 
         # Controlla se ci sono risultati
         if not filtered_df.empty:
-            st.dataframe(filtered_df)
+            st.dataframe(filtered_df, use_container_width=True)
         else:
             st.warning("⚠️ Nessun dato trovato per il type selezionato.")
