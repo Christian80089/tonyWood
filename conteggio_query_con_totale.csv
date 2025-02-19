@@ -1,0 +1,13 @@
+type,count,total_count
+Minima tra 1X2 = 1,319,500
+Minima tra 1X2 = 2,178,500
+Massima tra 1X2 = 1,106,500
+Massima tra 1X2 = 2,240,500
+Massima tra 1X2 = X,158,500
+"Quota X tra 4 e 5, vittoria della favorita",54,500
+"Quota X tra 4 e 5, vittoria della sfavorita",16,500
+Quota Goal e Under < No Goal e Over,71,500
+Quota Over < Goal,147,500
+Quota No Goal e Over < Goal e Under,38,500
+"Under e No Goal < 2, Goal e Over >= 2",47,500
+"Goal < Over e No Goal, Under > Over",159,500
