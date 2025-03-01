@@ -43,7 +43,7 @@ if __name__ == "__main__":
         ]
     
     # Caricare il CSV
-    df = pd.read_csv("C:/Users/chris/Desktop/tonyWoodScript/scrapingRisultati.csv", delimiter=",")
+    df = pd.read_csv("scrapingRisultati.csv", delimiter=",")
     df[columns_to_cast_float] = df[columns_to_cast_float].apply(pd.to_numeric, errors="coerce")
     df["risultatoFinale"] = df.apply(lambda row: get_winner(row["selectorRisultato"], row["squadraCasa"], row["squadraOspite"]), axis=1)
 

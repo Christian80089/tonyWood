@@ -11,3 +11,5 @@ Quota Over < Goal,147,500
 Quota No Goal e Over < Goal e Under,38,500
 "Under e No Goal < 2, Goal e Over >= 2",47,500
 "Goal < Over e No Goal, Under > Over",159,500
+Scala 1 > X > 2,102,500
+Scala 2 > X > 1,236,500
