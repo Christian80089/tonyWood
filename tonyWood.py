@@ -140,6 +140,16 @@ if __name__ == "__main__":
             WHERE selectorQuotaGoalMedia < selectorQuotaOver25Media 
             AND selectorQuotaNoGoalMedia > selectorQuotaOver25Media 
             AND selectorQuotaUnder25Media > selectorQuotaOver25Media
+        """,
+        "Scala 1 > X > 2": """
+            SELECT * FROM df 
+            WHERE selectorQuota1Media > selectorQuotaxMedia 
+            AND selectorQuotaxMedia > selectorQuota2Media 
+        """,
+       "Scala 2 > X > 1": """
+            SELECT * FROM df 
+            WHERE selectorQuota2Media > selectorQuotaxMedia 
+            AND selectorQuotaxMedia > selectorQuota1Media 
         """
     }
 
